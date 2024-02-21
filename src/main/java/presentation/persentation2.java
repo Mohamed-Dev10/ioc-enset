@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.util.Scanner;
 
 public class persentation2 {
-
+   private static IMetier metier;
     public static void main(String[] args) throws Exception{
         Scanner scanner = new Scanner(new File("config.txt"));
 
@@ -19,7 +19,7 @@ public class persentation2 {
 
         String metierClassName = scanner.nextLine();
         Class cmetier = Class.forName(metierClassName);
-        IMetier metier = (IMetier) cmetier.getConstructor().newInstance();
+         metier = (IMetier) cmetier.getConstructor().newInstance();
 
         Method setDao = cmetier.getDeclaredMethod("setDao",IDao.class);
         setDao.invoke(metier,dao);
